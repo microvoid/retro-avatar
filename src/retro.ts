@@ -2,29 +2,30 @@ import { Canvas } from 'canvas'
 import lodash from 'lodash'
 import { hash } from './hash'
 import { reflect } from './utils'
+import { theme } from './theme'
 
 const { isNull, isNumber, isString } = lodash
 
 type RetroOptions = {
-  bgColor?: string | null
+  bgColor?: number | string
   imagePadding?: number
   maxFill?: number
   minFill?: number
-  pixelColor?: number
+  pixelColor?: number | string
   pixelPadding?: number
   pixelSize?: number
   tiles?: number
 }
 
 const defaultRetroOptions: RetroOptions = {
-  bgColor: null,
-  imagePadding: 0,
-  maxFill: 0.9,
-  minFill: 0.3,
-  pixelColor: 0,
-  pixelPadding: 0,
   pixelSize: 10,
-  tiles: 5
+  bgColor: null,
+  pixelPadding: 0,
+  imagePadding: 0,
+  tiles: 5,
+  minFill: 0.3,
+  maxFill: 0.9,
+  pixelColor: 0
 }
 
 export function retro(id: string, options?: RetroOptions) {
@@ -39,12 +40,13 @@ export function retro(id: string, options?: RetroOptions) {
     imagePadding
   } = {
     ...defaultRetroOptions,
+    ...theme.github,
     ...options
   } as Required<RetroOptions>
 
   const mid = Math.ceil(tiles / 2)
-  const hashed = hash(id, mid * tiles, minFill, maxFill)
-  const pic = reflect(hashed.pixels, tiles)
+  const { colors, pixels } = hash(id, mid * tiles, minFill, maxFill)
+  const pic = reflect(pixels, tiles)
 
   const csize = pixelSize * tiles + imagePadding * 2
   const canvas = new Canvas(csize, csize)
@@ -53,7 +55,7 @@ export function retro(id: string, options?: RetroOptions) {
   if (isString(bgColor)) {
     ctx.fillStyle = bgColor
   } else if (isNumber(bgColor)) {
-    ctx.fillStyle = '#' + hashed.colors[bgColor]
+    ctx.fillStyle = '#' + colors[bgColor]
   }
 
   if (!isNull(bgColor)) ctx.fillRect(0, 0, csize, csize)
@@ -63,7 +65,7 @@ export function retro(id: string, options?: RetroOptions) {
   if (isString(pixelColor)) {
     ctx.fillStyle = pixelColor
   } else if (isNumber(pixelColor)) {
-    ctx.fillStyle = '#' + hashed.colors[pixelColor]
+    ctx.fillStyle = '#' + colors[pixelColor]
   } else {
     drawOp = ctx.clearRect.bind(ctx)
   }
