@@ -24,7 +24,7 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "clean": "del build",
+    "clean": "rm -rf build",
     "prebuild": "run-s clean",
     "predev": "run-s clean",
     "pretest": "run-s build",
@@ -53,5 +53,10 @@
   },
   "keywords": [
     "avatar"
-  ]
+  ],
+  "dependencies": {
+    "@types/lodash": "^3",
+    "canvas": "^2.11.0",
+    "lodash": "^3"
+  }
 }
