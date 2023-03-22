@@ -9,6 +9,17 @@ export type RetroTheme = {
   tiles?: number
 }
 
+export const defaultTheme: RetroTheme = {
+  pixelSize: 10,
+  bgColor: null,
+  pixelPadding: 0,
+  imagePadding: 0,
+  tiles: 5,
+  minFill: 0.3,
+  maxFill: 0.9,
+  pixelColor: 0
+}
+
 export const theme: Record<
   'github' | 'gravatar' | 'mono' | 'mosaic' | 'mini' | 'window',
   RetroTheme
@@ -21,9 +32,8 @@ export const theme: Record<
     tiles: 5
   },
   gravatar: {
-    pixelColor: 0,
-    tiles: 8,
-    bgColor: 1
+    bgColor: 1,
+    tiles: 8
   },
   mono: {
     bgColor: '#F0F0F0',

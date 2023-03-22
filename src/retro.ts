@@ -2,23 +2,32 @@ import { Canvas } from 'canvas'
 import lodash from 'lodash'
 import { hash } from './hash'
 import { reflect } from './utils'
-import { theme, RetroTheme } from './theme'
+import { theme, RetroTheme, defaultTheme } from './theme'
 
-const { isNull, isNumber, isString } = lodash
+const { isNull, isNumber, isString, isUndefined } = lodash
 
-const defaultRetroOptions: RetroTheme = {
-  pixelSize: 10,
-  bgColor: null,
-  pixelPadding: 0,
-  imagePadding: 0,
-  tiles: 5,
-  minFill: 0.3,
-  maxFill: 0.9,
-  pixelColor: 0
+type RetroOptions = {
+  theme?: RetroTheme
+  size?: number
 }
 
-export function retro(id: string, options = theme.github) {
-  const {
+const defaultOptions: Required<RetroOptions> = {
+  theme: theme.github,
+  size: 512
+}
+
+export function retro(id: string, options = defaultOptions) {
+  const { size } = {
+    ...defaultOptions,
+    ...options
+  }
+
+  const theme = {
+    ...defaultTheme,
+    ...options.theme
+  } as Required<RetroTheme>
+
+  let {
     tiles,
     pixelSize,
     pixelPadding,
@@ -27,18 +36,18 @@ export function retro(id: string, options = theme.github) {
     maxFill,
     pixelColor,
     imagePadding
-  } = {
-    ...defaultRetroOptions,
-    ...theme.github,
-    ...options
-  } as Required<RetroTheme>
+  } = theme
+
+  const ratio = size / (pixelSize * tiles + imagePadding * 2)
+
+  pixelSize = pixelSize * ratio
+  imagePadding = imagePadding * ratio
 
   const mid = Math.ceil(tiles / 2)
   const { colors, pixels } = hash(id, mid * tiles, minFill, maxFill)
   const pic = reflect(pixels, tiles)
 
-  const csize = pixelSize * tiles + imagePadding * 2
-  const canvas = new Canvas(csize, csize)
+  const canvas = new Canvas(size, size)
   const ctx = canvas.getContext('2d')
 
   if (isString(bgColor)) {
@@ -47,7 +56,7 @@ export function retro(id: string, options = theme.github) {
     ctx.fillStyle = '#' + colors[bgColor]
   }
 
-  if (!isNull(bgColor)) ctx.fillRect(0, 0, csize, csize)
+  if (!isNull(bgColor)) ctx.fillRect(0, 0, size, size)
 
   var drawOp = ctx.fillRect.bind(ctx)
 

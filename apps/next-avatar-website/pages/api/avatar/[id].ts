@@ -16,11 +16,18 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const { id, t = 'github' } = req.query
+  const { id, t = 'github', s } = req.query
 
   logger.api.info('handle api')
 
   if (!isString(id)) {
+    res.status(404).end()
+    return
+  }
+
+  const size = Number(s) || 256
+
+  if (size < 16 || size > 2048) {
     res.status(404).end()
     return
   }
@@ -32,15 +39,23 @@ export default function handler(
   }
 
   const startTS = performance.now()
-  const data = retro(id, theme).toBuffer()
+  const data = retro(id, {
+    theme,
+    size
+  })
   const endTS = performance.now()
+  const buffer = data.toBuffer()
 
-  logger.api.info(`retro cause(${id}): ${Math.floor(endTS - startTS)}ms`)
+  logger.api.info(
+    `[retro(${id})] bufsize: ${buffer.length}; timespent: ${Math.floor(
+      endTS - startTS
+    )}ms`
+  )
 
   res
     .writeHead(200, {
       'Content-Type': 'image/png',
       'Cache-Control': 'public, max-age=604800, immutable'
     })
-    .end(data, 'binary')
+    .end(buffer, 'binary')
 }
