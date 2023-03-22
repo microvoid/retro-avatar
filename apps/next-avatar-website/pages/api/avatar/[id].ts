@@ -1,30 +1,41 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { retro } from 'next-avatar'
+import { isString, includes } from 'lodash'
+import { retro, theme as RetroTheme } from 'next-avatar'
 import { logger } from '@/common'
 
 type Data = {
   name: string
 }
 
+type Theme = keyof typeof RetroTheme
+
+const themeKeys = Object.keys(RetroTheme) as Theme[]
+
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const { id } = req.query
+  const { id, t = 'github' } = req.query
 
   logger.api.info('handle api')
 
-  if (typeof id !== 'string') {
+  if (!isString(id)) {
     res.status(404).end()
     return
   }
 
+  let theme = RetroTheme.github
+
+  if (includes(themeKeys, t)) {
+    theme = RetroTheme[t as Theme]
+  }
+
   const startTS = performance.now()
-  const data = retro(id).toBuffer()
+  const data = retro(id, theme).toBuffer()
   const endTS = performance.now()
 
-  logger.api.info(`retro cause: ${Math.floor(endTS - startTS)}ms`)
+  logger.api.info(`retro cause(${id}): ${Math.floor(endTS - startTS)}ms`)
 
   res
     .writeHead(200, {

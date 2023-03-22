@@ -1,4 +1,18 @@
-export const theme = {
+export type RetroTheme = {
+  bgColor?: number | string
+  imagePadding?: number
+  maxFill?: number
+  minFill?: number
+  pixelColor?: number | string
+  pixelPadding?: number
+  pixelSize?: number
+  tiles?: number
+}
+
+export const theme: Record<
+  'github' | 'gravatar' | 'mono' | 'mosaic' | 'mini' | 'window',
+  RetroTheme
+> = {
   github: {
     pixelSize: 70,
     bgColor: '#F0F0F0',
@@ -7,6 +21,7 @@ export const theme = {
     tiles: 5
   },
   gravatar: {
+    pixelColor: 0,
     tiles: 8,
     bgColor: 1
   },
@@ -34,7 +49,7 @@ export const theme = {
   window: {
     pixelColor: null,
     bgColor: 0,
-    imagePadding: 2,
+    imagePadding: 20,
     pixelPadding: 1,
     pixelSize: 16
   }

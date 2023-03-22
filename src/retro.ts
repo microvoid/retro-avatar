@@ -2,22 +2,11 @@ import { Canvas } from 'canvas'
 import lodash from 'lodash'
 import { hash } from './hash'
 import { reflect } from './utils'
-import { theme } from './theme'
+import { theme, RetroTheme } from './theme'
 
 const { isNull, isNumber, isString } = lodash
 
-type RetroOptions = {
-  bgColor?: number | string
-  imagePadding?: number
-  maxFill?: number
-  minFill?: number
-  pixelColor?: number | string
-  pixelPadding?: number
-  pixelSize?: number
-  tiles?: number
-}
-
-const defaultRetroOptions: RetroOptions = {
+const defaultRetroOptions: RetroTheme = {
   pixelSize: 10,
   bgColor: null,
   pixelPadding: 0,
@@ -28,7 +17,7 @@ const defaultRetroOptions: RetroOptions = {
   pixelColor: 0
 }
 
-export function retro(id: string, options?: RetroOptions) {
+export function retro(id: string, options = theme.github) {
   const {
     tiles,
     pixelSize,
@@ -42,7 +31,7 @@ export function retro(id: string, options?: RetroOptions) {
     ...defaultRetroOptions,
     ...theme.github,
     ...options
-  } as Required<RetroOptions>
+  } as Required<RetroTheme>
 
   const mid = Math.ceil(tiles / 2)
   const { colors, pixels } = hash(id, mid * tiles, minFill, maxFill)
