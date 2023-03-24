@@ -1,9 +1,10 @@
-import { Canvas } from 'canvas'
+import NodeCanvas from 'canvas'
 import lodash from 'lodash'
 import { hash } from './hash'
 import { reflect } from './utils'
 import { theme, RetroTheme, defaultTheme } from './theme'
 
+const { Canvas } = NodeCanvas
 const { isNull, isNumber, isString, isUndefined } = lodash
 
 type RetroOptions = {
