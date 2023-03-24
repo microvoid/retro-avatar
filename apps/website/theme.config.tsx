@@ -58,6 +58,10 @@ const config: DocsThemeConfig = {
         <meta content={description} name='og:description' />
         <meta content='summary_large_image' name='twitter:card' />
         <meta content='@nextui-org' name='twitter:site' />
+        <meta
+          name='viewport'
+          content='width=device-width, initial-scale=1, user-scalable=0'
+        />
         {/* <meta content={image} name='twitter:image' /> */}
         <meta
           content={`${config.title} – ${systemConstants.site.title}`}
