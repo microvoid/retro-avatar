@@ -30,16 +30,17 @@ const App = ({ Component, pageProps }) => {
 
   return (
     <>
-      <Head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: ga.html
-          }}
-        />
-      </Head>
+      {ga && (
+        <Head>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: ga.html
+            }}
+          />
+        </Head>
+      )}
 
-      {/* Global Site Tag (gtag.js) - Google Analytics */}
-      <Script strategy='afterInteractive' src={ga.url} />
+      {ga && <Script strategy='afterInteractive' src={ga.url} />}
 
       <SSRProvider>
         <Component {...pageProps} />

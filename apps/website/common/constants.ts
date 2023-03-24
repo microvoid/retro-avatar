@@ -12,7 +12,7 @@ export const systemConstants = {
     description:
       'Create indenticon-like visual hashes styled like Github and Gravatar (retro) avatars'
   },
-  ga: fromEnv('GA_TRACKING_ID', null),
+  ga: fromEnv<string>('GA_TRACKING_ID', null),
   logflare: logflareAPIKey
     ? { APIKey: logflareAPIKey, token: logflareToken }
     : null
