@@ -1,11 +1,29 @@
-import React from "react";
-import { Inter } from "next/font/google";
-import { SSRProvider } from "@react-aria/ssr";
-import { Analytics } from "@vercel/analytics/react";
-import { isProd } from "@utils";
-import "../styles.css";
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/router'
+import { Inter } from 'next/font/google'
+import { SSRProvider } from '@react-aria/ssr'
+import { Analytics } from '@vercel/analytics/react'
+import { isProd } from '@utils'
+import { GA_TRACKING_ID, pageview } from '@common/gtag'
 
-const MyApp = ({ Component, pageProps }) => {
+import '../styles.css'
+
+const App = ({ Component, pageProps }) => {
+  const router = useRouter()
+
+  useEffect(() => {
+    if (!GA_TRACKING_ID) return
+
+    const handleRouteChange = (url: string) => {
+      pageview(url)
+    }
+
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
+
   return (
     <>
       <SSRProvider>
@@ -13,36 +31,36 @@ const MyApp = ({ Component, pageProps }) => {
       </SSRProvider>
       {isProd && <Analytics />}
     </>
-  );
-};
+  )
+}
 
 const sans = Inter({
   adjustFontFallback: true,
-  display: "optional",
+  display: 'optional',
   fallback: [
-    "ui-sans-serif",
-    "system-ui",
-    "-apple-system",
-    "BlinkMacSystemFont",
+    'ui-sans-serif',
+    'system-ui',
+    '-apple-system',
+    'BlinkMacSystemFont',
     '"Segoe UI"',
-    "Roboto",
+    'Roboto',
     '"Helvetica Neue"',
-    "Arial",
+    'Arial',
     '"Noto Sans"',
-    "sans-serif",
+    'sans-serif',
     '"Apple Color Emoji"',
     '"Segoe UI Emoji"',
     '"Segoe UI Symbol"',
-    '"Noto Color Emoji"',
+    '"Noto Color Emoji"'
   ],
   preload: true,
-  style: "normal",
-  subsets: ["latin"],
-  weight: "variable",
-});
+  style: 'normal',
+  subsets: ['latin'],
+  weight: 'variable'
+})
 
 export const fonts = {
-  sans: sans.style.fontFamily,
-};
+  sans: sans.style.fontFamily
+}
 
-export default MyApp;
+export default App
