@@ -4,9 +4,13 @@ import { Inter } from 'next/font/google'
 import { SSRProvider } from '@react-aria/ssr'
 import { Analytics } from '@vercel/analytics/react'
 import { isProd } from '@utils'
-import { GA_TRACKING_ID, pageview } from '@common/gtag'
+import { GA_TRACKING_ID, pageview, options } from '@common/gtag'
+import Head from 'next/head'
+import Script from 'next/script'
 
 import '../styles.css'
+
+const ga = options()
 
 const App = ({ Component, pageProps }) => {
   const router = useRouter()
@@ -26,6 +30,17 @@ const App = ({ Component, pageProps }) => {
 
   return (
     <>
+      <Head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: ga.html
+          }}
+        />
+      </Head>
+
+      {/* Global Site Tag (gtag.js) - Google Analytics */}
+      <Script strategy='afterInteractive' src={ga.url} />
+
       <SSRProvider>
         <Component {...pageProps} />
       </SSRProvider>

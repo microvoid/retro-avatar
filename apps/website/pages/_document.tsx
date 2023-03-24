@@ -2,8 +2,6 @@ import type { DocumentContext } from 'next/document'
 import React, { Children } from 'react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { SkipNavLink } from 'nextra-theme-docs'
-import { options } from '@common/gtag'
-import Script from 'next/script'
 
 import { fonts } from './_app'
 
@@ -15,8 +13,6 @@ const MyDocument = () => {
         <SkipNavLink styled />
         <Main />
         <NextScript />
-
-        {gaEl}
       </body>
     </Html>
   )
@@ -40,18 +36,5 @@ MyDocument.getInitialProps = async (ctx: DocumentContext) => {
     styles: Children.toArray([initialProps.styles, fontStyles])
   }
 }
-
-const ga = options()
-const gaEl = ga ? (
-  <>
-    <Script strategy='afterInteractive' src={ga.url} />
-
-    <script
-      dangerouslySetInnerHTML={{
-        __html: ga.html
-      }}
-    />
-  </>
-) : null
 
 export default MyDocument
