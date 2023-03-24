@@ -1,8 +1,5 @@
-import { get } from 'lodash'
-
-const { env } = process
-const logflareAPIKey = fromEnv('LOGFLARE_API_KEY', null)
-const logflareToken = fromEnv('LOGFLARE_API_TOKEN', null)
+const logflareAPIKey = process.env.LOGFLARE_API_KEY || null
+const logflareToken = process.env.LOGFLARE_API_TOKEN || null
 
 export const systemConstants = {
   name: 'retro-avatar',
@@ -12,12 +9,8 @@ export const systemConstants = {
     description:
       'Create indenticon-like visual hashes styled like Github and Gravatar (retro) avatars'
   },
-  ga: fromEnv<string>('GA_TRACKING_ID', null),
+  GA_TRACKING_ID: process.env.NEXT_PUBLIC_ANALYTICS_ID || null,
   logflare: logflareAPIKey
     ? { APIKey: logflareAPIKey, token: logflareToken }
     : null
-}
-
-function fromEnv<T>(key: string, defaultValue?: T) {
-  return get(env, key, defaultValue)
 }

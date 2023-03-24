@@ -1,11 +1,9 @@
 import { systemConstants } from './constants'
 
-export const GA_TRACKING_ID = systemConstants.ga
-
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 export const pageview = (url: string) => {
   // @ts-ignore
-  window.gtag('config', GA_TRACKING_ID, {
+  window.gtag('config', systemConstants.GA_TRACKING_ID, {
     page_path: url
   })
 }
@@ -28,14 +26,14 @@ export const event = ({ action, category, label, value }: GAEvent) => {
 }
 
 export const options = () => {
-  if (!GA_TRACKING_ID) return null
+  if (!systemConstants.GA_TRACKING_ID) return null
 
   return {
-    url: `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`,
+    url: `https://www.googletagmanager.com/gtag/js?id=${systemConstants.GA_TRACKING_ID}`,
     html: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', '${GA_TRACKING_ID}', {
+gtag('config', '${systemConstants.GA_TRACKING_ID}', {
   page_path: window.location.pathname,
 });`
   }
