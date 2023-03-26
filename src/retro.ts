@@ -69,8 +69,8 @@ export function retro(id: string, options = defaultOptions) {
     drawOp = ctx.clearRect.bind(ctx)
   }
 
-  for (var x = 0; x < tiles; x++)
-    for (var y = 0; y < tiles; y++)
+  for (let x = 0; x < tiles; x++)
+    for (let y = 0; y < tiles; y++)
       if (pic[y][x])
         drawOp(
           x * pixelSize + pixelPadding + imagePadding,
