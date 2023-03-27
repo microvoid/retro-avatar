@@ -5,7 +5,7 @@ import { reflect } from './utils'
 import { theme, RetroTheme, defaultTheme } from './theme'
 
 const { Canvas } = NodeCanvas
-const { isNull, isNumber, isString, isUndefined } = lodash
+const { isNull, isNumber, isString } = lodash
 
 type RetroOptions = {
   theme?: RetroTheme

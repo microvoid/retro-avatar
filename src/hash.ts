@@ -1,7 +1,7 @@
 import lodash from 'lodash'
 import { cmp_brightness, sha512, unpack, xor } from './utils'
 
-export function hash(str: string, n, minFill, maxFill) {
+export function hash(str: string, n: number, minFill: number, maxFill: number) {
   const buf = Buffer.alloc(str.length + 1)
 
   buf.write(str)
