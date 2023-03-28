@@ -17,13 +17,5 @@ export default withNextra({
         permanent: false
       }
     ]
-  },
-  module: {
-    rules: [
-      {
-        test: /\.node$/,
-        loader: 'node-loader'
-      }
-    ]
   }
 })

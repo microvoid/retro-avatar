@@ -26,7 +26,6 @@ importers:
       next: ^13.2.4
       nextra: 2.2.20
       nextra-theme-docs: 2.2.20
-      node-loader: ^2.0.0
       pino: ^8.11.0
       pino-logflare: ^0.3.12
       pino-pretty: ^10.0.0
@@ -55,7 +54,6 @@ importers:
       next: 13.2.4_biqbaboplfbrettd7655fr4n2y
       nextra: 2.2.20_ld2jel3hspngo3u5lti2kgl2sq
       nextra-theme-docs: 2.2.20_mborlevrhep2dwd3wssrtcgtou
-      node-loader: 2.0.0
       pino: 8.11.0
       pino-logflare: 0.3.12
       pino-pretty: 10.0.0
@@ -83,7 +81,6 @@ importers:
       '@types/node': ^18.15.3
       canvas: ^2.11.0
       lodash: ^3
-      node-loader: ^2.0.0
       npm-run-all: ^4.1.5
       tsup: ^6.6.3
       tsx: ^3.12.5
@@ -92,7 +89,6 @@ importers:
       '@types/lodash': 3.10.5
       canvas: 2.11.0
       lodash: 3.10.1
-      node-loader: 2.0.0
     devDependencies:
       '@types/node': 18.15.10
       npm-run-all: 4.1.5
@@ -1349,10 +1345,6 @@ packages:
     engines: {node: '>=0.6'}
     dev: false
 
-  /big.js/5.2.2:
-    resolution: {integrity: sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==}
-    dev: false
-
   /bignumber.js/9.1.1:
     resolution: {integrity: sha512-pHm4LsMJ6lzgNGVfZHjMoO8sdoRhOzOH4MLmY65Jg70bpxCKu5iOHNJyfF6OyvYw7t8Fpf35RuzUyqnQsj8Vig==}
     dev: false
@@ -1770,11 +1762,6 @@ packages:
 
   /emoji-regex/8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
-    dev: false
-
-  /emojis-list/3.0.0:
-    resolution: {integrity: sha512-/kyM18EfinwXZbno9FyUGeFh87KC8HRQBQGildHZbEuRyWFOmv1U10o9BBp8XVZDVNNuQKyIGIu5ZYAAXJ0V2Q==}
-    engines: {node: '>= 4'}
     dev: false
 
   /end-of-stream/1.4.4:
@@ -2759,12 +2746,6 @@ packages:
     resolution: {integrity: sha512-mrqyZKfX5EhL7hvqcV6WG1yYjnjeuYDzDhhcAAUrq8Po85NBQBJP+ZDUT75qZQ98IkUoBqdkExkukOU7Ts2wrw==}
     dev: true
 
-  /json5/2.2.3:
-    resolution: {integrity: sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==}
-    engines: {node: '>=6'}
-    hasBin: true
-    dev: false
-
   /jsonc-parser/3.2.0:
     resolution: {integrity: sha512-gfFQZrcTc8CnKXp6Y4/CBT3fTc0OVuDofpre4aEeEpSBPV5X5v4+Vmx+8snU7RLPrNHPKSgLxGo9YuQzz20o+w==}
     dev: false
@@ -2822,15 +2803,6 @@ packages:
     resolution: {integrity: sha512-IXO6OCs9yg8tMKzfPZ1YmheJbZCiEsnBdcB03l0OcfK9prKnJb96siuHCr5Fl37/yo9DnKU+TLpxzTUspw9shg==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dev: true
-
-  /loader-utils/2.0.4:
-    resolution: {integrity: sha512-xXqpXoINfFhgua9xiqD8fPFHgkoq1mmmpE92WlDbm9rNRd/EbRb+Gqf908T2DMfuHjjJlksiK2RbHVOdD/MqSw==}
-    engines: {node: '>=8.9.0'}
-    dependencies:
-      big.js: 5.2.2
-      emojis-list: 3.0.0
-      json5: 2.2.3
-    dev: false
 
   /lodash.get/4.4.2:
     resolution: {integrity: sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==}
@@ -3732,15 +3704,6 @@ packages:
         optional: true
     dependencies:
       whatwg-url: 5.0.0
-    dev: false
-
-  /node-loader/2.0.0:
-    resolution: {integrity: sha512-I5VN34NO4/5UYJaUBtkrODPWxbobrE4hgDqPrjB25yPkonFhCmZ146vTH+Zg417E9Iwoh1l/MbRs1apc5J295Q==}
-    engines: {node: '>= 10.13.0'}
-    peerDependencies:
-      webpack: ^5.0.0
-    dependencies:
-      loader-utils: 2.0.4
     dev: false
 
   /node-releases/2.0.10:
