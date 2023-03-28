@@ -3,6 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { isString, includes } from 'lodash'
 import { retro, theme as RetroTheme } from 'retro-avatar'
 import { logger } from '@common'
+import { avatarService } from '@services'
 
 type Data = {
   name: string
@@ -31,6 +32,13 @@ export default function handler(
     res.status(404).end()
     return
   }
+
+  avatarService.record({
+    avatarId: id,
+    url: req.url,
+    theme: (req.query.t as string) || null,
+    size: Number(s) || null
+  })
 
   let theme = RetroTheme.github
 
