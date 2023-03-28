@@ -6,6 +6,7 @@ module.exports = {
       args: 'run start',
       autorestart: true,
       env: {
+        PORT: 3033,
         NODE_ENV: 'production'
       }
     }
