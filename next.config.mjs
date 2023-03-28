@@ -8,6 +8,7 @@ const withNextra = nextra({
 /** @type {import('next').NextConfig} */
 export default withNextra({
   reactStrictMode: true,
+  transpilePackages: ['retro-avatar'],
   async redirects() {
     return [
       {

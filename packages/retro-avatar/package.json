@@ -1,0 +1,46 @@
+{
+  "name": "retro-avatar",
+  "version": "0.0.2",
+  "description": "Create indenticon-like like Github and Gravatar (retro) avatars.",
+  "license": "MIT",
+  "type": "module",
+  "source": "./src/index.ts",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "engines": {
+    "node": ">=14"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rm -rf dist",
+    "prebuild": "run-s clean",
+    "predev": "run-s clean",
+    "pretest": "run-s dist"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.3",
+    "npm-run-all": "^4.1.5",
+    "tsup": "^6.6.3",
+    "tsx": "^3.12.5",
+    "typescript": "^4.9.5"
+  },
+  "keywords": [
+    "avatar"
+  ],
+  "dependencies": {
+    "@types/lodash": "^3",
+    "canvas": "^2.11.0",
+    "lodash": "^3"
+  }
+}

@@ -16,7 +16,7 @@
 /out/
 
 # production
-/build
+dist
 
 # misc
 .DS_Store
@@ -48,3 +48,10 @@ next-env.d.ts
 
 # data dumps
 out/
+
+.next
+.vercel
+
+# Logs
+logs
+*.log
