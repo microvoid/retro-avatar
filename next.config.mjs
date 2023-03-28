@@ -8,13 +8,21 @@ const withNextra = nextra({
 /** @type {import('next').NextConfig} */
 export default withNextra({
   reactStrictMode: true,
-  transpilePackages: ['retro-avatar'],
+  transpilePackages: ['retro-avatar', 'canvas'],
   async redirects() {
     return [
       {
         source: '/docs',
         destination: '/docs/getting-started',
         permanent: false
+      }
+    ]
+  },
+  module: {
+    rules: [
+      {
+        test: /\.node$/,
+        loader: 'node-loader'
       }
     ]
   }
