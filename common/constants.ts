@@ -3,7 +3,7 @@ const logflareToken = process.env.LOGFLARE_API_TOKEN || null
 
 export const systemConstants = {
   name: 'retro-avatar',
-  repo: 'https://github.com/youking-lib/retro-avatar',
+  repo: 'https://github.com/microvoid/retro-avatar',
   site: {
     title: 'Retro Avatar',
     description:

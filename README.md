@@ -84,10 +84,15 @@ The size must be between 16 and 2048, and default to 256.
 
 retro-avatar rely on the node-canvas project, so you need to install its dependencies on your server.
 
-```
-# for Ubuntu
+**for Ubuntu**
+
+```shell
 sudo apt-get install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
-# for Fedora
+```
+
+**for Fedora**
+
+```shell
 sudo yum install gcc-c++ cairo-devel pango-devel libjpeg-turbo-devel giflib-devel
 ```
 
@@ -101,14 +106,13 @@ git clone https://github.com/microvoid/retro-avatar.git
 
 3. deploy
 
-```
-cd ./retro-avatar/apps/website/
+```shell
 sh deploy.sh
 ```
 
 4. environment variables (unnecessary)
 
-```
+```shell
 # path: retro-avatar/apps/website/.env
 
 # Google Analytics
