@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
-const Size = [8, 12, 16, 24, 32, 64, 128, 256, 512, 1024].map((n) => {
+const Size = [16, 24, 32, 64, 128, 256, 512, 1024].map((n) => {
   return {
     size: n,
     title: `${n}*${n}`
