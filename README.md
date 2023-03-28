@@ -3,7 +3,7 @@
     <img width="20%" src="https://avatar.microvoid.io/api/avatar/retro-avatar?t=gravatar" alt="retro-avatar" />
     <img width="20%" src="https://avatar.microvoid.io/api/avatar/retro-avatar?t=window" alt="retro-avatar" />
     <img width="20%" src="https://avatar.microvoid.io/api/avatar/retro-avatar?t=github" alt="retro-avatar" />
-    <h1 align="center">tailwind-variants</h1>
+    <h1 align="center">retro-avatar</h1>
   </a>
 </p>
 
