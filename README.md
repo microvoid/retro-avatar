@@ -1,8 +1,8 @@
 <p align="center">
   <a href="https://avatar.microvoid.io/">
-    <img width="20%" src="https://avatar.microvoid.io/api/avatar/retro-avatar?t=gravatar" alt="tailwind-variants" />
-    <img width="20%" src="https://avatar.microvoid.io/api/avatar/retro-avatar?t=window" alt="tailwind-variants" />
-    <img width="20%" src="https://avatar.microvoid.io/api/avatar/retro-avatar?t=github" alt="tailwind-variants" />
+    <img width="20%" src="https://avatar.microvoid.io/api/avatar/retro-avatar?t=gravatar" alt="retro-avatar" />
+    <img width="20%" src="https://avatar.microvoid.io/api/avatar/retro-avatar?t=window" alt="retro-avatar" />
+    <img width="20%" src="https://avatar.microvoid.io/api/avatar/retro-avatar?t=github" alt="retro-avatar" />
     <h1 align="center">tailwind-variants</h1>
   </a>
 </p>
@@ -20,18 +20,18 @@
   </a>
 </p>
 
-## Features
+# Features
 
 - Generate distinctive images for each user, enhancing recognizability.
 - Intuitive and easy to recognize.
 - Supports various themes.
 - All style options can be changed.
 
-## Documentation
+# Documentation
 
 For full documentation, visit [website](https://avatar.microvoid.io/)
 
-## Quick Start
+# Quick Start
 
 You don't need to install any dependencies!
 
@@ -52,11 +52,33 @@ for example:
 
 - ProjectName: [https://avatar.microvoid.io/api/avatar/retro-avatar](https://avatar.microvoid.io/api/avatar/retro-avatar)
 
-## Projects
+# Options
+
+## Themes
+
+| theme | usage | demo |
+| ---- | ---- | ---- |
+| github | https://avatar.microvoid.io/api/avatar/retro-avatar?t=github | ![retro-avatar](https://avatar.microvoid.io/api/avatar/retro-avatar?t=github&s=32)   |
+| gravatar | https://avatar.microvoid.io/api/avatar/retro-avatar?t=gravatar | ![retro-avatar](https://avatar.microvoid.io/api/avatar/retro-avatar?t=gravatar&s=32)   |
+| mono | https://avatar.microvoid.io/api/avatar/retro-avatar?t=mono | ![retro-avatar](https://avatar.microvoid.io/api/avatar/retro-avatar?t=mono&s=32)   |
+| mini | https://avatar.microvoid.io/api/avatar/retro-avatar?t=mini | ![retro-avatar](https://avatar.microvoid.io/api/avatar/retro-avatar?t=mini&s=32)   |
+| window | https://avatar.microvoid.io/api/avatar/retro-avatar?t=window | ![retro-avatar](https://avatar.microvoid.io/api/avatar/retro-avatar?t=window&s=32)   |
+| mosaic | https://avatar.microvoid.io/api/avatar/retro-avatar?t=mosaic | ![retro-avatar](https://avatar.microvoid.io/api/avatar/retro-avatar?t=mosaic&s=32)   |
+
+## Size
+
+| size | usage | demo |
+| ---- | ---- | ---- |
+| 32 | https://avatar.microvoid.io/api/avatar/retro-avatar?s=32 | ![retro-avatar](https://avatar.microvoid.io/api/avatar/retro-avatar?t=window&s=32)   |
+| 64 | https://avatar.microvoid.io/api/avatar/retro-avatar?s=64 | ![retro-avatar](https://avatar.microvoid.io/api/avatar/retro-avatar?t=window&s=64)   |
+
+The size must be between 16 and 2048, and default to 256.
+
+# Projects
 
 - https://avatar.marktion.cn/ Chinese mirrors enhance the access speed in this area.
 
-## Self host
+# Self host
 
 1. prerequires
 
