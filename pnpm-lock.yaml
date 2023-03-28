@@ -18,6 +18,7 @@ importers:
       '@vercel/analytics': ^0.1.11
       autoprefixer: ^10.4.13
       babel-eslint: ^8.0.3
+      canvas: ^2.11.0
       classnames: ^2.3.2
       clsx: ^1.2.1
       framer-motion: ^8.5.0
@@ -46,6 +47,7 @@ importers:
       '@react-stately/radio': 3.7.0_react@18.2.0
       '@react-stately/tooltip': 3.3.0_react@18.2.0
       '@vercel/analytics': 0.1.11_react@18.2.0
+      canvas: 2.11.0
       classnames: 2.3.2
       clsx: 1.2.1
       framer-motion: 8.5.5_biqbaboplfbrettd7655fr4n2y
