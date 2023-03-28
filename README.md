@@ -69,8 +69,8 @@ for example:
 
 | size | usage | demo |
 | ---- | ---- | ---- |
-| 32 | https://avatar.microvoid.io/api/avatar/retro-avatar?s=32 | ![retro-avatar](https://avatar.microvoid.io/api/avatar/retro-avatar?t=window&s=32)   |
-| 64 | https://avatar.microvoid.io/api/avatar/retro-avatar?s=64 | ![retro-avatar](https://avatar.microvoid.io/api/avatar/retro-avatar?t=window&s=64)   |
+| 32 | https://avatar.microvoid.io/api/avatar/retro-avatar?s=32 | ![retro-avatar](https://avatar.microvoid.io/api/avatar/retro-avatar?s=32)   |
+| 64 | https://avatar.microvoid.io/api/avatar/retro-avatar?s=64 | ![retro-avatar](https://avatar.microvoid.io/api/avatar/retro-avatar?s=64)   |
 
 The size must be between 16 and 2048, and default to 256.
 
