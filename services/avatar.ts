@@ -7,6 +7,8 @@ class AvatarService extends Base {
     theme?: string
     size?: number
   }) {
+    this.postAvatar(options)
+
     const query = this.supabase
       .from('avatar_record')
       .select()
@@ -31,7 +33,7 @@ class AvatarService extends Base {
     } else {
       const recordItem = isExistRes.data[0]
 
-      const res = await this.supabase
+      await this.supabase
         .from('avatar_record')
         .update({
           count: (recordItem.count || 0) + 1
