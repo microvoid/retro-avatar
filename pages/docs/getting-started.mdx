@@ -1,29 +1,43 @@
-import { Tab, Tabs } from 'nextra-theme-docs'
-import { TVComponent, WindowResizer } from '@components'
-import { systemConstants } from '@common'
-
-# Getting started
+# Self host
 
 **retro-avatar** create indenticon-like visual hashes styled like Github and Gravatar (retro) avatars
 
-## Installation
+## Use directly
 
-To use **retro-avatar** in your project, you can install it as a dependency:
+You don't need to install any dependencies! Just replace the `ID_HERE` placeholder with any text.
 
-<Tabs items={['npm', 'yarn', 'pnpm']}>
-  <Tab>
-    ```bash copy
-    npm install retro-avatar
-    ```
-  </Tab>
-  <Tab>
-    ```bash copy
-    yarn add retro-avatar
-    ```
-  </Tab>
-  <Tab>
-    ```bash copy
-    pnpm add retro-avatar
-    ```
-  </Tab>
-</Tabs>
+```
+<img src="https://avatar.microvoid.io/api/avatar/ID_HERE" />
+```
+
+for example:
+
+- UserName: [https://avatar.microvoid.io/api/avatar/youking-lib](https://avatar.microvoid.io/api/avatar/youking-lib)
+
+- UserId: [https://avatar.microvoid.io/api/avatar/user-id-xxxx](https://avatar.microvoid.io/api/avatar/user-id-xxxx)
+
+- UserEmail: [https://avatar.microvoid.io/api/avatar/whistleyz@163.com](https://avatar.microvoid.io/api/avatar/whistleyz@163.com)
+
+- ProjectName: [https://avatar.microvoid.io/api/avatar/retro-avatar](https://avatar.microvoid.io/api/avatar/retro-avatar)
+
+# Options
+
+## Themes
+
+| theme | usage | demo |
+| ---- | ---- | ---- |
+| github | https://avatar.microvoid.io/api/avatar/retro-avatar?t=github | ![retro-avatar](https://avatar.microvoid.io/api/avatar/retro-avatar?t=github&s=32)   |
+| gravatar | https://avatar.microvoid.io/api/avatar/retro-avatar?t=gravatar | ![retro-avatar](https://avatar.microvoid.io/api/avatar/retro-avatar?t=gravatar&s=32)   |
+| mono | https://avatar.microvoid.io/api/avatar/retro-avatar?t=mono | ![retro-avatar](https://avatar.microvoid.io/api/avatar/retro-avatar?t=mono&s=32)   |
+| mini | https://avatar.microvoid.io/api/avatar/retro-avatar?t=mini | ![retro-avatar](https://avatar.microvoid.io/api/avatar/retro-avatar?t=mini&s=32)   |
+| window | https://avatar.microvoid.io/api/avatar/retro-avatar?t=window | ![retro-avatar](https://avatar.microvoid.io/api/avatar/retro-avatar?t=window&s=32)   |
+| mosaic | https://avatar.microvoid.io/api/avatar/retro-avatar?t=mosaic | ![retro-avatar](https://avatar.microvoid.io/api/avatar/retro-avatar?t=mosaic&s=32)   |
+
+## Size
+
+| size | usage | demo |
+| ---- | ---- | ---- |
+| 32 | https://avatar.microvoid.io/api/avatar/retro-avatar?s=32 | ![retro-avatar](https://avatar.microvoid.io/api/avatar/retro-avatar?s=32)   |
+| 64 | https://avatar.microvoid.io/api/avatar/retro-avatar?s=64 | ![retro-avatar](https://avatar.microvoid.io/api/avatar/retro-avatar?s=64)   |
+
+The size must be between 16 and 2048, and default to 256.

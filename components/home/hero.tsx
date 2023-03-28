@@ -26,7 +26,7 @@ const Hero: React.FC<HeroProps> = () => {
         </p>
       </div>
       <div className={tvs.box({ row: true, class: 'gap-2 z-10' })}>
-        <a className={tvs.button()} href='/docs/introduction'>
+        <a className={tvs.button()} href='/docs/getting-started'>
           Documentation
         </a>
         <a
@@ -45,7 +45,7 @@ const Hero: React.FC<HeroProps> = () => {
           </span>
         </a>
       </div>
-      <Snippet className='z-10' />
+      {/* <Snippet className='z-10' /> */}
     </section>
   )
 }

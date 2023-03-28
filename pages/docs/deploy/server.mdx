@@ -1,0 +1,44 @@
+# Deploy on server
+
+## prerequires
+
+retro-avatar rely on the node-canvas project, so you need to install its dependencies on your server.
+
+**for Ubuntu**
+
+```shell
+sudo apt-get install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
+```
+
+**for Fedora**
+
+```shell
+sudo yum install gcc-c++ cairo-devel pango-devel libjpeg-turbo-devel giflib-devel
+```
+
+For other environments, please refer to [node-cavas](https://github.com/Automattic/node-canvas).
+
+## clone project
+
+```shell
+git clone https://github.com/microvoid/retro-avatar.git
+```
+
+## deploy
+
+```shell
+sh deploy.sh
+```
+
+## environment variables (unnecessary)
+
+```shell
+# path: retro-avatar/apps/website/.env
+
+# Google Analytics
+NEXT_PUBLIC_ANALYTICS_ID=
+
+# Logflare API
+LOGFLARE_API_KEY=
+LOGFLARE_API_TOKEN=
+```
