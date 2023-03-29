@@ -25,6 +25,7 @@ importers:
       framer-motion: ^8.5.0
       husky: ^8.0.3
       lodash: ^3
+      lowdb: ^5.1.0
       next: ^13.2.4
       nextra: 2.2.20
       nextra-theme-docs: 2.2.20
@@ -54,6 +55,7 @@ importers:
       clsx: 1.2.1
       framer-motion: 8.5.5_biqbaboplfbrettd7655fr4n2y
       lodash: 3.10.1
+      lowdb: 5.1.0
       next: 13.2.4_biqbaboplfbrettd7655fr4n2y
       nextra: 2.2.20_ld2jel3hspngo3u5lti2kgl2sq
       nextra-theme-docs: 2.2.20_mborlevrhep2dwd3wssrtcgtou
@@ -2904,6 +2906,13 @@ packages:
     dependencies:
       js-tokens: 4.0.0
 
+  /lowdb/5.1.0:
+    resolution: {integrity: sha512-OEysJ2S3j05RqehEypEv3h6EgdV4Y7LTq7LngRNqe1IxsInOm66/sa3fzoI6mmqs2CC+zIJW3vfncGNv2IGi3A==}
+    engines: {node: '>=14.16'}
+    dependencies:
+      steno: 3.0.0
+    dev: false
+
   /lru-cache/4.1.5:
     resolution: {integrity: sha512-sWZlbEP2OsHNkXrMl5GYk/jKk70MBng6UU4YI/qGDYbgf6YbP4EvmqISbXCoJiRKs+1bSpFHVgQxvJ17F2li5g==}
     dependencies:
@@ -4665,6 +4674,11 @@ packages:
 
   /sprintf-js/1.0.3:
     resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
+    dev: false
+
+  /steno/3.0.0:
+    resolution: {integrity: sha512-uZtn7Ht9yXLiYgOsmo8btj4+f7VxyYheMt8g6F1ANjyqByQXEE2Gygjgenp3otHH1TlHsS4JAaRGv5wJ1wvMNw==}
+    engines: {node: '>=14.16'}
     dev: false
 
   /stream-browserify/3.0.0:

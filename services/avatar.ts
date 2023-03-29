@@ -1,4 +1,10 @@
+import { logger } from '@common/logger'
+import lodash from 'lodash'
 import { Base } from './base'
+
+const log = logger.service.child({
+  name: 'avatar'
+})
 
 class AvatarService extends Base {
   async record(options: {
@@ -7,54 +13,47 @@ class AvatarService extends Base {
     theme?: string
     size?: number
   }) {
-    this.postAvatar(options)
+    await this.cache.avatar.push({
+      id: options.avatarId,
+      url: options.url,
+      theme: options.theme,
+      size: options.size
+    })
 
-    const query = this.supabase
-      .from('avatar_record')
-      .select()
-      .eq('avatarId', options.avatarId)
-      .limit(1)
+    this.fromCacheToDB()
+  }
 
-    if (options.theme) {
-      query.eq('theme', options.theme)
-    }
+  fromCacheToDB = lodash.throttle(
+    async () => {
+      const values = await this.cache.avatar.get()
 
-    if (options.size) {
-      query.eq('size', options.size)
-    }
+      await this.cache.avatar.clean()
 
-    const isExistRes = await query
+      if (values.length === 0) {
+        return
+      }
 
-    if (isExistRes.status === 200 && isExistRes.data.length === 0) {
-      await this.supabase.from('avatar_record').insert({
-        ...options,
-        count: 1
-      })
-    } else {
-      const recordItem = isExistRes.data[0]
+      log.info(`fromCacheToDB value length: ${values.length}`)
 
-      await this.supabase
-        .from('avatar_record')
-        .update({
-          count: (recordItem.count || 0) + 1
+      const grouped = lodash.groupBy(values, (value) => value.url)
+
+      Object.values(grouped).forEach((group: typeof values) => {
+        const avatar = group[0]
+
+        this.model.avatar.record({
+          avatarId: avatar.id,
+          url: avatar.url,
+          increase: group.length,
+          theme: avatar.theme,
+          size: avatar.size
         })
-        .eq('avatarId', options.avatarId)
-    }
-  }
-
-  async postAvatar(options: { avatarId: string }) {
-    const res = await this.supabase
-      .from('avatar')
-      .select()
-      .limit(1)
-      .eq('avatarId', options.avatarId)
-
-    if (res.status === 200 && res.data.length === 0) {
-      await this.supabase.from('avatar').insert({
-        avatarId: options.avatarId
       })
+    },
+    1000,
+    {
+      trailing: true
     }
-  }
+  )
 }
 
 export const avatarService = new AvatarService()

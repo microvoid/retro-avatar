@@ -42,5 +42,13 @@ export const logger = {
 
   api: createLogger({
     name: 'api'
+  }),
+
+  service: createLogger({
+    name: 'service'
+  }),
+
+  model: createLogger({
+    name: 'model'
   })
 }
