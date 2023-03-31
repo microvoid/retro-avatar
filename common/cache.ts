@@ -3,48 +3,32 @@ import { Low } from 'lowdb'
 // @ts-ignore
 import { JSONFile } from 'lowdb/node'
 
-export type AvatarCache = {
-  id: string
-  url: string
-  theme?: string
-  size?: number
-}
-
-type LowDBData = {
-  avatars: AvatarCache[]
-}
-
-const getDefaultValue: () => LowDBData = () => ({
-  avatars: []
-})
-
-export const lowdb = new Low<LowDBData>(
+export const lowdb = new Low<Record<string, any[]>>(
   new JSONFile(systemConstants.CACHE_LOWDB_PATH)
 )
 
-export class Cache<T extends keyof LowDBData> {
-  private _queue: LowDBData[T] = []
+type CacheOptions<T> = {
+  key: string
+  getDefaultValue: () => T[]
+}
+
+export class Cache<T> {
+  private _queue: T[] = []
   private _queueResolver: Promise<void>
 
-  constructor(public key: T) {}
+  constructor(public options: CacheOptions<T>) {}
 
-  async get(): Promise<LowDBData[T]> {
+  async get(): Promise<T[]> {
     await lowdb.read()
 
-    if (!lowdb.data) {
-      lowdb.data = getDefaultValue()
-      await lowdb.write()
+    if (!lowdb.data || !lowdb.data[this.options.key]) {
+      await this.reset()
     }
 
-    if (!lowdb.data[this.key]) {
-      lowdb.data[this.key] = getDefaultValue()[this.key]
-      await lowdb.write()
-    }
-
-    return lowdb.data[this.key]
+    return lowdb.data[this.options.key]
   }
 
-  push(item: LowDBData[T][number]) {
+  push(item: T) {
     this._queue.push(item)
 
     if (this._queueResolver) {
@@ -64,15 +48,14 @@ export class Cache<T extends keyof LowDBData> {
     return this._queueResolver
   }
 
-  async clean() {
-    const data = await this.get()
-
-    data.length = 0
+  async reset() {
+    lowdb.data ||= {}
+    lowdb.data[this.options.key] = this.options.getDefaultValue()
 
     await lowdb.write()
   }
 
-  static create<T extends keyof LowDBData>(key: T) {
-    return new Cache(key)
+  static create<T>(options: CacheOptions<T>) {
+    return new Cache(options)
   }
 }

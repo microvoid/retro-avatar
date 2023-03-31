@@ -1,9 +1,12 @@
 import { Cache } from '@common/cache'
-import { avatarModel } from './model'
+import { Avatar, avatarModel } from './model'
 
 export class Base {
   cache = {
-    avatar: Cache.create('avatars')
+    avatar: Cache.create<Avatar>({
+      key: 'avatars',
+      getDefaultValue: () => []
+    })
   }
 
   model = {

@@ -34,9 +34,10 @@ export default function handler(
   }
 
   avatarService.record({
-    avatarId: id,
+    id,
     url: req.url,
     theme: (req.query.t as string) || null,
+    refer: req.headers.referer,
     size: Number(s) || null
   })
 
