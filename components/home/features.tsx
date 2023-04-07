@@ -4,7 +4,9 @@ import { card, badge } from '@components/elements'
 import { Input } from '@components'
 import { genAvatars } from '@utils/avatars'
 import { systemConstants } from '@common/constants'
+import dynamic from 'next/dynamic'
 import { SizeSelect } from './size-select'
+import Codeblock from './code-block'
 
 interface FeaturesProps {}
 
@@ -23,6 +25,10 @@ const Features: React.FC<FeaturesProps> = () => {
 
   return (
     <section className='my-10 gap-6 z-10'>
+      <h2 className='font-extrabold mt-4 text-2xl md:text-3xl text-black dark:text-white'>
+        PLAYGROUND
+      </h2>
+
       <div className='flex my-10 gap-6'>
         <Input defaultValue={systemConstants.name} onChange={setId} />
         <SizeSelect onChange={setSize} />
@@ -57,6 +63,14 @@ const Features: React.FC<FeaturesProps> = () => {
             </p>
           </div>
         ))}
+      </div>
+
+      <h2 className='font-extrabold mt-10 text-2xl md:text-3xl text-black dark:text-white'>
+        FOR SITE OWNERS & DEVELOPERS
+      </h2>
+
+      <div className='my-10'>
+        <Codeblock />
       </div>
     </section>
   )
